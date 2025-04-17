@@ -4,9 +4,11 @@ An interactive site where users can experiment with AI-generated music—choose 
 
 ## Features
 - Select mood, genre (optional), and instruments
-- Customize music parameters (tempo, length, etc.)
+- Customize music parameters (tempo, length, key, scale, structure, intensity, energy, extra context)
 - Generate unique music using AI (MusicGen-medium)
 - Download generated audio files
+- Robust backend and frontend input validation
+- Timeout and error handling for model inference
 - Modern web UI (Next.js + React)
 
 ## Tech Stack
@@ -16,40 +18,19 @@ An interactive site where users can experiment with AI-generated music—choose 
 
 ## How it Works
 - User selects mood, genre, instruments, and parameters in the UI
-- The backend translates these into a prompt (e.g., "sad jazz piano music")
+- The backend translates these into a structured prompt (e.g., "sad jazz piano music at 120 BPM in the key of C major")
 - MusicGen-medium generates audio based on the prompt
 - The app returns a downloadable audio file
 
-## Getting Started
 
-### Backend
-1. Create and activate the Python virtual environment:
-   ```bash
-   uv venv
-   source .venv/bin/activate
-   ```
-2. Install dependencies:
-   ```bash
-   uv pip install -r requirements.txt
-   ```
-3. Run the FastAPI server:
-   ```bash
-   uvicorn app.main:app --reload
-   ```
+## Testing
+- Backend: `pytest tests/test_music_generation.py -v` (model is mocked for fast, reliable CI)
+- Frontend: See `frontend/README.md` for details
 
-### Frontend
-1. Navigate to the frontend directory:
-   ```bash
-   cd frontend
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
+## Project Status (2025-04-17)
+- Prompt engineering and robust backend/frontend validation & testing completed
+- Next up: Frontend user experience improvements (loading indicator, track history, error handling, mobile/responsive design)
+- Future: Refine prompt engineering further, melody upload, user accounts, sharing, branding, deployment
 
 ## License
 MIT License (see LICENSE file). **Generated content may not be used for commercial purposes.**
@@ -61,3 +42,4 @@ MIT License (see LICENSE file). **Generated content may not be used for commerci
 - **Improved audio realism:** MIDI-to-audio rendering, soundfont support, or advanced MusicGen models.
 - **User accounts and history**
 - **More advanced prompt engineering**
+- **Frontend UX improvements**
